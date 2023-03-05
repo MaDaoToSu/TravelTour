@@ -45,6 +45,9 @@ namespace travelH2tour.Models
 		partial void InsertDICHVU(DICHVU instance);
 		partial void UpdateDICHVU(DICHVU instance);
 		partial void DeleteDICHVU(DICHVU instance);
+		partial void InsertHOADON(HOADON instance);
+		partial void UpdateHOADON(HOADON instance);
+		partial void DeleteHOADON(HOADON instance);
 		partial void InsertKHACHHANG(KHACHHANG instance);
 		partial void UpdateKHACHHANG(KHACHHANG instance);
 		partial void DeleteKHACHHANG(KHACHHANG instance);
@@ -129,6 +132,14 @@ namespace travelH2tour.Models
 			get
 			{
 				return this.GetTable<DICHVU>();
+			}
+		}
+
+		public System.Data.Linq.Table<HOADON> HOADONs
+		{
+			get
+			{
+				return this.GetTable<HOADON>();
 			}
 		}
 
@@ -271,13 +282,7 @@ namespace travelH2tour.Models
 
 		private EntityRef<DICHVU> _DICHVU;
 
-		private EntityRef<DICHVU> _DICHVU1;
-
-		private EntityRef<DICHVU> _DICHVU2;
-
 		private EntityRef<PHIEUDATTOUR> _PHIEUDATTOUR;
-
-		private EntityRef<PHIEUDATTOUR> _PHIEUDATTOUR1;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -292,10 +297,7 @@ namespace travelH2tour.Models
 		public CT_DICHVU()
 		{
 			this._DICHVU = default(EntityRef<DICHVU>);
-			this._DICHVU1 = default(EntityRef<DICHVU>);
-			this._DICHVU2 = default(EntityRef<DICHVU>);
 			this._PHIEUDATTOUR = default(EntityRef<PHIEUDATTOUR>);
-			this._PHIEUDATTOUR1 = default(EntityRef<PHIEUDATTOUR>);
 			OnCreated();
 		}
 
@@ -310,7 +312,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MAPDT != value))
 				{
-					if ((this._PHIEUDATTOUR.HasLoadedOrAssignedValue || this._PHIEUDATTOUR1.HasLoadedOrAssignedValue))
+					if (this._PHIEUDATTOUR.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -334,8 +336,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MADV != value))
 				{
-					if (((this._DICHVU.HasLoadedOrAssignedValue || this._DICHVU1.HasLoadedOrAssignedValue)
-								|| this._DICHVU2.HasLoadedOrAssignedValue))
+					if (this._DICHVU.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -382,74 +383,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DICHVU_CT_DICHVU1", Storage = "_DICHVU1", ThisKey = "MADV", OtherKey = "MADV", IsForeignKey = true)]
-		public DICHVU DICHVU1
-		{
-			get
-			{
-				return this._DICHVU1.Entity;
-			}
-			set
-			{
-				DICHVU previousValue = this._DICHVU1.Entity;
-				if (((previousValue != value)
-							|| (this._DICHVU1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DICHVU1.Entity = null;
-						previousValue.CT_DICHVUs1.Remove(this);
-					}
-					this._DICHVU1.Entity = value;
-					if ((value != null))
-					{
-						value.CT_DICHVUs1.Add(this);
-						this._MADV = value.MADV;
-					}
-					else
-					{
-						this._MADV = default(long);
-					}
-					this.SendPropertyChanged("DICHVU1");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DICHVU_CT_DICHVU2", Storage = "_DICHVU2", ThisKey = "MADV", OtherKey = "MADV", IsForeignKey = true)]
-		public DICHVU DICHVU2
-		{
-			get
-			{
-				return this._DICHVU2.Entity;
-			}
-			set
-			{
-				DICHVU previousValue = this._DICHVU2.Entity;
-				if (((previousValue != value)
-							|| (this._DICHVU2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DICHVU2.Entity = null;
-						previousValue.CT_DICHVUs2.Remove(this);
-					}
-					this._DICHVU2.Entity = value;
-					if ((value != null))
-					{
-						value.CT_DICHVUs2.Add(this);
-						this._MADV = value.MADV;
-					}
-					else
-					{
-						this._MADV = default(long);
-					}
-					this.SendPropertyChanged("DICHVU2");
-				}
-			}
-		}
-
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_DICHVU", Storage = "_PHIEUDATTOUR", ThisKey = "MAPDT", OtherKey = "MAPDT", IsForeignKey = true)]
 		public PHIEUDATTOUR PHIEUDATTOUR
 		{
@@ -480,40 +413,6 @@ namespace travelH2tour.Models
 						this._MAPDT = default(long);
 					}
 					this.SendPropertyChanged("PHIEUDATTOUR");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_DICHVU1", Storage = "_PHIEUDATTOUR1", ThisKey = "MAPDT", OtherKey = "MAPDT", IsForeignKey = true)]
-		public PHIEUDATTOUR PHIEUDATTOUR1
-		{
-			get
-			{
-				return this._PHIEUDATTOUR1.Entity;
-			}
-			set
-			{
-				PHIEUDATTOUR previousValue = this._PHIEUDATTOUR1.Entity;
-				if (((previousValue != value)
-							|| (this._PHIEUDATTOUR1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHIEUDATTOUR1.Entity = null;
-						previousValue.CT_DICHVUs1.Remove(this);
-					}
-					this._PHIEUDATTOUR1.Entity = value;
-					if ((value != null))
-					{
-						value.CT_DICHVUs1.Add(this);
-						this._MAPDT = value.MAPDT;
-					}
-					else
-					{
-						this._MAPDT = default(long);
-					}
-					this.SendPropertyChanged("PHIEUDATTOUR1");
 				}
 			}
 		}
@@ -559,15 +458,7 @@ namespace travelH2tour.Models
 
 		private EntityRef<PHIEUDATTOUR> _PHIEUDATTOUR;
 
-		private EntityRef<PHIEUDATTOUR> _PHIEUDATTOUR1;
-
-		private EntityRef<PHIEUDATTOUR> _PHIEUDATTOUR2;
-
 		private EntityRef<TOURDL> _TOURDL;
-
-		private EntityRef<TOURDL> _TOURDL1;
-
-		private EntityRef<TOURDL> _TOURDL2;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -590,11 +481,7 @@ namespace travelH2tour.Models
 		public CT_TOUR()
 		{
 			this._PHIEUDATTOUR = default(EntityRef<PHIEUDATTOUR>);
-			this._PHIEUDATTOUR1 = default(EntityRef<PHIEUDATTOUR>);
-			this._PHIEUDATTOUR2 = default(EntityRef<PHIEUDATTOUR>);
 			this._TOURDL = default(EntityRef<TOURDL>);
-			this._TOURDL1 = default(EntityRef<TOURDL>);
-			this._TOURDL2 = default(EntityRef<TOURDL>);
 			OnCreated();
 		}
 
@@ -609,8 +496,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MAPDT != value))
 				{
-					if (((this._PHIEUDATTOUR.HasLoadedOrAssignedValue || this._PHIEUDATTOUR1.HasLoadedOrAssignedValue)
-								|| this._PHIEUDATTOUR2.HasLoadedOrAssignedValue))
+					if (this._PHIEUDATTOUR.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -634,8 +520,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MATOUR != value))
 				{
-					if (((this._TOURDL.HasLoadedOrAssignedValue || this._TOURDL1.HasLoadedOrAssignedValue)
-								|| this._TOURDL2.HasLoadedOrAssignedValue))
+					if (this._TOURDL.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -708,7 +593,7 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_DANHGIATUKHACHHANG", DbType = "NVarChar(2000)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_DANHGIATUKHACHHANG", DbType = "NVarChar(4000)")]
 		public string DANHGIATUKHACHHANG
 		{
 			get
@@ -762,74 +647,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_TOUR1", Storage = "_PHIEUDATTOUR1", ThisKey = "MAPDT", OtherKey = "MAPDT", IsForeignKey = true)]
-		public PHIEUDATTOUR PHIEUDATTOUR1
-		{
-			get
-			{
-				return this._PHIEUDATTOUR1.Entity;
-			}
-			set
-			{
-				PHIEUDATTOUR previousValue = this._PHIEUDATTOUR1.Entity;
-				if (((previousValue != value)
-							|| (this._PHIEUDATTOUR1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHIEUDATTOUR1.Entity = null;
-						previousValue.CT_TOURs1.Remove(this);
-					}
-					this._PHIEUDATTOUR1.Entity = value;
-					if ((value != null))
-					{
-						value.CT_TOURs1.Add(this);
-						this._MAPDT = value.MAPDT;
-					}
-					else
-					{
-						this._MAPDT = default(long);
-					}
-					this.SendPropertyChanged("PHIEUDATTOUR1");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_TOUR2", Storage = "_PHIEUDATTOUR2", ThisKey = "MAPDT", OtherKey = "MAPDT", IsForeignKey = true)]
-		public PHIEUDATTOUR PHIEUDATTOUR2
-		{
-			get
-			{
-				return this._PHIEUDATTOUR2.Entity;
-			}
-			set
-			{
-				PHIEUDATTOUR previousValue = this._PHIEUDATTOUR2.Entity;
-				if (((previousValue != value)
-							|| (this._PHIEUDATTOUR2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHIEUDATTOUR2.Entity = null;
-						previousValue.CT_TOURs2.Remove(this);
-					}
-					this._PHIEUDATTOUR2.Entity = value;
-					if ((value != null))
-					{
-						value.CT_TOURs2.Add(this);
-						this._MAPDT = value.MAPDT;
-					}
-					else
-					{
-						this._MAPDT = default(long);
-					}
-					this.SendPropertyChanged("PHIEUDATTOUR2");
-				}
-			}
-		}
-
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "TOURDL_CT_TOUR", Storage = "_TOURDL", ThisKey = "MATOUR", OtherKey = "MATOUR", IsForeignKey = true)]
 		public TOURDL TOURDL
 		{
@@ -860,74 +677,6 @@ namespace travelH2tour.Models
 						this._MATOUR = default(long);
 					}
 					this.SendPropertyChanged("TOURDL");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "TOURDL_CT_TOUR1", Storage = "_TOURDL1", ThisKey = "MATOUR", OtherKey = "MATOUR", IsForeignKey = true)]
-		public TOURDL TOURDL1
-		{
-			get
-			{
-				return this._TOURDL1.Entity;
-			}
-			set
-			{
-				TOURDL previousValue = this._TOURDL1.Entity;
-				if (((previousValue != value)
-							|| (this._TOURDL1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TOURDL1.Entity = null;
-						previousValue.CT_TOURs1.Remove(this);
-					}
-					this._TOURDL1.Entity = value;
-					if ((value != null))
-					{
-						value.CT_TOURs1.Add(this);
-						this._MATOUR = value.MATOUR;
-					}
-					else
-					{
-						this._MATOUR = default(long);
-					}
-					this.SendPropertyChanged("TOURDL1");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "TOURDL_CT_TOUR2", Storage = "_TOURDL2", ThisKey = "MATOUR", OtherKey = "MATOUR", IsForeignKey = true)]
-		public TOURDL TOURDL2
-		{
-			get
-			{
-				return this._TOURDL2.Entity;
-			}
-			set
-			{
-				TOURDL previousValue = this._TOURDL2.Entity;
-				if (((previousValue != value)
-							|| (this._TOURDL2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TOURDL2.Entity = null;
-						previousValue.CT_TOURs2.Remove(this);
-					}
-					this._TOURDL2.Entity = value;
-					if ((value != null))
-					{
-						value.CT_TOURs2.Add(this);
-						this._MATOUR = value.MATOUR;
-					}
-					else
-					{
-						this._MATOUR = default(long);
-					}
-					this.SendPropertyChanged("TOURDL2");
 				}
 			}
 		}
@@ -967,10 +716,6 @@ namespace travelH2tour.Models
 
 		private EntitySet<TOURDL> _TOURDLs;
 
-		private EntitySet<TOURDL> _TOURDLs1;
-
-		private EntitySet<TOURDL> _TOURDLs2;
-
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
 		partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -986,8 +731,6 @@ namespace travelH2tour.Models
 		public DIADIEM()
 		{
 			this._TOURDLs = new EntitySet<TOURDL>(new Action<TOURDL>(this.attach_TOURDLs), new Action<TOURDL>(this.detach_TOURDLs));
-			this._TOURDLs1 = new EntitySet<TOURDL>(new Action<TOURDL>(this.attach_TOURDLs1), new Action<TOURDL>(this.detach_TOURDLs1));
-			this._TOURDLs2 = new EntitySet<TOURDL>(new Action<TOURDL>(this.attach_TOURDLs2), new Action<TOURDL>(this.detach_TOURDLs2));
 			OnCreated();
 		}
 
@@ -1064,32 +807,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DIADIEM_TOURDL1", Storage = "_TOURDLs1", ThisKey = "MADIADIEM", OtherKey = "MADIADIEM")]
-		public EntitySet<TOURDL> TOURDLs1
-		{
-			get
-			{
-				return this._TOURDLs1;
-			}
-			set
-			{
-				this._TOURDLs1.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DIADIEM_TOURDL2", Storage = "_TOURDLs2", ThisKey = "MADIADIEM", OtherKey = "MADIADIEM")]
-		public EntitySet<TOURDL> TOURDLs2
-		{
-			get
-			{
-				return this._TOURDLs2;
-			}
-			set
-			{
-				this._TOURDLs2.Assign(value);
-			}
-		}
-
 		public event PropertyChangingEventHandler PropertyChanging;
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1121,30 +838,6 @@ namespace travelH2tour.Models
 			this.SendPropertyChanging();
 			entity.DIADIEM = null;
 		}
-
-		private void attach_TOURDLs1(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.DIADIEM1 = this;
-		}
-
-		private void detach_TOURDLs1(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.DIADIEM1 = null;
-		}
-
-		private void attach_TOURDLs2(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.DIADIEM2 = this;
-		}
-
-		private void detach_TOURDLs2(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.DIADIEM2 = null;
-		}
 	}
 
 	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.DICHVU")]
@@ -1161,10 +854,6 @@ namespace travelH2tour.Models
 
 		private EntitySet<CT_DICHVU> _CT_DICHVUs;
 
-		private EntitySet<CT_DICHVU> _CT_DICHVUs1;
-
-		private EntitySet<CT_DICHVU> _CT_DICHVUs2;
-
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
 		partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1180,8 +869,6 @@ namespace travelH2tour.Models
 		public DICHVU()
 		{
 			this._CT_DICHVUs = new EntitySet<CT_DICHVU>(new Action<CT_DICHVU>(this.attach_CT_DICHVUs), new Action<CT_DICHVU>(this.detach_CT_DICHVUs));
-			this._CT_DICHVUs1 = new EntitySet<CT_DICHVU>(new Action<CT_DICHVU>(this.attach_CT_DICHVUs1), new Action<CT_DICHVU>(this.detach_CT_DICHVUs1));
-			this._CT_DICHVUs2 = new EntitySet<CT_DICHVU>(new Action<CT_DICHVU>(this.attach_CT_DICHVUs2), new Action<CT_DICHVU>(this.detach_CT_DICHVUs2));
 			OnCreated();
 		}
 
@@ -1258,32 +945,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DICHVU_CT_DICHVU1", Storage = "_CT_DICHVUs1", ThisKey = "MADV", OtherKey = "MADV")]
-		public EntitySet<CT_DICHVU> CT_DICHVUs1
-		{
-			get
-			{
-				return this._CT_DICHVUs1;
-			}
-			set
-			{
-				this._CT_DICHVUs1.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DICHVU_CT_DICHVU2", Storage = "_CT_DICHVUs2", ThisKey = "MADV", OtherKey = "MADV")]
-		public EntitySet<CT_DICHVU> CT_DICHVUs2
-		{
-			get
-			{
-				return this._CT_DICHVUs2;
-			}
-			set
-			{
-				this._CT_DICHVUs2.Assign(value);
-			}
-		}
-
 		public event PropertyChangingEventHandler PropertyChanging;
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1315,29 +976,156 @@ namespace travelH2tour.Models
 			this.SendPropertyChanging();
 			entity.DICHVU = null;
 		}
+	}
 
-		private void attach_CT_DICHVUs1(CT_DICHVU entity)
+	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.HOADON")]
+	public partial class HOADON : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+		private long _MAHD;
+
+		private System.Nullable<decimal> _TONGTIEN;
+
+		private long _MAPDT;
+
+		private EntityRef<PHIEUDATTOUR> _PHIEUDATTOUR;
+
+		#region Extensibility Method Definitions
+		partial void OnLoaded();
+		partial void OnValidate(System.Data.Linq.ChangeAction action);
+		partial void OnCreated();
+		partial void OnMAHDChanging(long value);
+		partial void OnMAHDChanged();
+		partial void OnTONGTIENChanging(System.Nullable<decimal> value);
+		partial void OnTONGTIENChanged();
+		partial void OnMAPDTChanging(long value);
+		partial void OnMAPDTChanged();
+		#endregion
+
+		public HOADON()
 		{
-			this.SendPropertyChanging();
-			entity.DICHVU1 = this;
+			this._PHIEUDATTOUR = default(EntityRef<PHIEUDATTOUR>);
+			OnCreated();
 		}
 
-		private void detach_CT_DICHVUs1(CT_DICHVU entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_MAHD", AutoSync = AutoSync.OnInsert, DbType = "BigInt NOT NULL IDENTITY", IsPrimaryKey = true, IsDbGenerated = true)]
+		public long MAHD
 		{
-			this.SendPropertyChanging();
-			entity.DICHVU1 = null;
+			get
+			{
+				return this._MAHD;
+			}
+			set
+			{
+				if ((this._MAHD != value))
+				{
+					this.OnMAHDChanging(value);
+					this.SendPropertyChanging();
+					this._MAHD = value;
+					this.SendPropertyChanged("MAHD");
+					this.OnMAHDChanged();
+				}
+			}
 		}
 
-		private void attach_CT_DICHVUs2(CT_DICHVU entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TONGTIEN", DbType = "Decimal(18,0)")]
+		public System.Nullable<decimal> TONGTIEN
 		{
-			this.SendPropertyChanging();
-			entity.DICHVU2 = this;
+			get
+			{
+				return this._TONGTIEN;
+			}
+			set
+			{
+				if ((this._TONGTIEN != value))
+				{
+					this.OnTONGTIENChanging(value);
+					this.SendPropertyChanging();
+					this._TONGTIEN = value;
+					this.SendPropertyChanged("TONGTIEN");
+					this.OnTONGTIENChanged();
+				}
+			}
 		}
 
-		private void detach_CT_DICHVUs2(CT_DICHVU entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_MAPDT", DbType = "BigInt NOT NULL")]
+		public long MAPDT
 		{
-			this.SendPropertyChanging();
-			entity.DICHVU2 = null;
+			get
+			{
+				return this._MAPDT;
+			}
+			set
+			{
+				if ((this._MAPDT != value))
+				{
+					if (this._PHIEUDATTOUR.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMAPDTChanging(value);
+					this.SendPropertyChanging();
+					this._MAPDT = value;
+					this.SendPropertyChanged("MAPDT");
+					this.OnMAPDTChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_HOADON", Storage = "_PHIEUDATTOUR", ThisKey = "MAPDT", OtherKey = "MAPDT", IsForeignKey = true)]
+		public PHIEUDATTOUR PHIEUDATTOUR
+		{
+			get
+			{
+				return this._PHIEUDATTOUR.Entity;
+			}
+			set
+			{
+				PHIEUDATTOUR previousValue = this._PHIEUDATTOUR.Entity;
+				if (((previousValue != value)
+							|| (this._PHIEUDATTOUR.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PHIEUDATTOUR.Entity = null;
+						previousValue.HOADONs.Remove(this);
+					}
+					this._PHIEUDATTOUR.Entity = value;
+					if ((value != null))
+					{
+						value.HOADONs.Add(this);
+						this._MAPDT = value.MAPDT;
+					}
+					else
+					{
+						this._MAPDT = default(long);
+					}
+					this.SendPropertyChanged("PHIEUDATTOUR");
+				}
+			}
+		}
+
+		public event PropertyChangingEventHandler PropertyChanging;
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 
@@ -1363,6 +1151,8 @@ namespace travelH2tour.Models
 
 		private string _CMND_CCCD_KH;
 
+		private string _HINHKHACHHANG;
+
 		private EntitySet<PHIEUDATTOUR> _PHIEUDATTOURs;
 
 		#region Extensibility Method Definitions
@@ -1385,6 +1175,8 @@ namespace travelH2tour.Models
 		partial void OnNGAYSINHChanged();
 		partial void OnCMND_CCCD_KHChanging(string value);
 		partial void OnCMND_CCCD_KHChanged();
+		partial void OnHINHKHACHHANGChanging(string value);
+		partial void OnHINHKHACHHANGChanged();
 		#endregion
 
 		public KHACHHANG()
@@ -1553,6 +1345,26 @@ namespace travelH2tour.Models
 			}
 		}
 
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_HINHKHACHHANG", DbType = "VarChar(100)")]
+		public string HINHKHACHHANG
+		{
+			get
+			{
+				return this._HINHKHACHHANG;
+			}
+			set
+			{
+				if ((this._HINHKHACHHANG != value))
+				{
+					this.OnHINHKHACHHANGChanging(value);
+					this.SendPropertyChanging();
+					this._HINHKHACHHANG = value;
+					this.SendPropertyChanged("HINHKHACHHANG");
+					this.OnHINHKHACHHANGChanged();
+				}
+			}
+		}
+
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "KHACHHANG_PHIEUDATTOUR", Storage = "_PHIEUDATTOURs", ThisKey = "MAKH", OtherKey = "MAKH")]
 		public EntitySet<PHIEUDATTOUR> PHIEUDATTOURs
 		{
@@ -1609,13 +1421,7 @@ namespace travelH2tour.Models
 
 		private string _TENLOAITOUR;
 
-		private System.Nullable<int> _SOLUONG;
-
 		private EntitySet<TOURDL> _TOURDLs;
-
-		private EntitySet<TOURDL> _TOURDLs1;
-
-		private EntitySet<TOURDL> _TOURDLs2;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -1625,15 +1431,11 @@ namespace travelH2tour.Models
 		partial void OnMALOAITOURChanged();
 		partial void OnTENLOAITOURChanging(string value);
 		partial void OnTENLOAITOURChanged();
-		partial void OnSOLUONGChanging(System.Nullable<int> value);
-		partial void OnSOLUONGChanged();
 		#endregion
 
 		public LOAITOUR()
 		{
 			this._TOURDLs = new EntitySet<TOURDL>(new Action<TOURDL>(this.attach_TOURDLs), new Action<TOURDL>(this.detach_TOURDLs));
-			this._TOURDLs1 = new EntitySet<TOURDL>(new Action<TOURDL>(this.attach_TOURDLs1), new Action<TOURDL>(this.detach_TOURDLs1));
-			this._TOURDLs2 = new EntitySet<TOURDL>(new Action<TOURDL>(this.attach_TOURDLs2), new Action<TOURDL>(this.detach_TOURDLs2));
 			OnCreated();
 		}
 
@@ -1677,26 +1479,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SOLUONG", DbType = "Int")]
-		public System.Nullable<int> SOLUONG
-		{
-			get
-			{
-				return this._SOLUONG;
-			}
-			set
-			{
-				if ((this._SOLUONG != value))
-				{
-					this.OnSOLUONGChanging(value);
-					this.SendPropertyChanging();
-					this._SOLUONG = value;
-					this.SendPropertyChanged("SOLUONG");
-					this.OnSOLUONGChanged();
-				}
-			}
-		}
-
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "LOAITOUR_TOURDL", Storage = "_TOURDLs", ThisKey = "MALOAITOUR", OtherKey = "MALOAITOUR")]
 		public EntitySet<TOURDL> TOURDLs
 		{
@@ -1707,32 +1489,6 @@ namespace travelH2tour.Models
 			set
 			{
 				this._TOURDLs.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "LOAITOUR_TOURDL1", Storage = "_TOURDLs1", ThisKey = "MALOAITOUR", OtherKey = "MALOAITOUR")]
-		public EntitySet<TOURDL> TOURDLs1
-		{
-			get
-			{
-				return this._TOURDLs1;
-			}
-			set
-			{
-				this._TOURDLs1.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "LOAITOUR_TOURDL2", Storage = "_TOURDLs2", ThisKey = "MALOAITOUR", OtherKey = "MALOAITOUR")]
-		public EntitySet<TOURDL> TOURDLs2
-		{
-			get
-			{
-				return this._TOURDLs2;
-			}
-			set
-			{
-				this._TOURDLs2.Assign(value);
 			}
 		}
 
@@ -1767,30 +1523,6 @@ namespace travelH2tour.Models
 			this.SendPropertyChanging();
 			entity.LOAITOUR = null;
 		}
-
-		private void attach_TOURDLs1(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOAITOUR1 = this;
-		}
-
-		private void detach_TOURDLs1(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOAITOUR1 = null;
-		}
-
-		private void attach_TOURDLs2(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOAITOUR2 = this;
-		}
-
-		private void detach_TOURDLs2(TOURDL entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOAITOUR2 = null;
-		}
 	}
 
 	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.NHANVIEN")]
@@ -1813,9 +1545,11 @@ namespace travelH2tour.Models
 
 		private string _CMND_CCCD_NV;
 
-		private EntitySet<PHIEUDATTOUR> _PHIEUDATTOURs;
+		private string _HINHNHANVIEN;
 
-		private EntitySet<PHIEUDATTOUR> _PHIEUDATTOURs1;
+		private System.Nullable<int> _SOTOURHOANTHANH;
+
+		private EntitySet<PHIEUDATTOUR> _PHIEUDATTOURs;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -1835,12 +1569,15 @@ namespace travelH2tour.Models
 		partial void OnNGAYSINHChanged();
 		partial void OnCMND_CCCD_NVChanging(string value);
 		partial void OnCMND_CCCD_NVChanged();
+		partial void OnHINHNHANVIENChanging(string value);
+		partial void OnHINHNHANVIENChanged();
+		partial void OnSOTOURHOANTHANHChanging(System.Nullable<int> value);
+		partial void OnSOTOURHOANTHANHChanged();
 		#endregion
 
 		public NHANVIEN()
 		{
 			this._PHIEUDATTOURs = new EntitySet<PHIEUDATTOUR>(new Action<PHIEUDATTOUR>(this.attach_PHIEUDATTOURs), new Action<PHIEUDATTOUR>(this.detach_PHIEUDATTOURs));
-			this._PHIEUDATTOURs1 = new EntitySet<PHIEUDATTOUR>(new Action<PHIEUDATTOUR>(this.attach_PHIEUDATTOURs1), new Action<PHIEUDATTOUR>(this.detach_PHIEUDATTOURs1));
 			OnCreated();
 		}
 
@@ -1984,6 +1721,46 @@ namespace travelH2tour.Models
 			}
 		}
 
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_HINHNHANVIEN", DbType = "VarChar(100)")]
+		public string HINHNHANVIEN
+		{
+			get
+			{
+				return this._HINHNHANVIEN;
+			}
+			set
+			{
+				if ((this._HINHNHANVIEN != value))
+				{
+					this.OnHINHNHANVIENChanging(value);
+					this.SendPropertyChanging();
+					this._HINHNHANVIEN = value;
+					this.SendPropertyChanged("HINHNHANVIEN");
+					this.OnHINHNHANVIENChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SOTOURHOANTHANH", DbType = "Int")]
+		public System.Nullable<int> SOTOURHOANTHANH
+		{
+			get
+			{
+				return this._SOTOURHOANTHANH;
+			}
+			set
+			{
+				if ((this._SOTOURHOANTHANH != value))
+				{
+					this.OnSOTOURHOANTHANHChanging(value);
+					this.SendPropertyChanging();
+					this._SOTOURHOANTHANH = value;
+					this.SendPropertyChanged("SOTOURHOANTHANH");
+					this.OnSOTOURHOANTHANHChanged();
+				}
+			}
+		}
+
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "NHANVIEN_PHIEUDATTOUR", Storage = "_PHIEUDATTOURs", ThisKey = "MANV", OtherKey = "MANV")]
 		public EntitySet<PHIEUDATTOUR> PHIEUDATTOURs
 		{
@@ -1994,19 +1771,6 @@ namespace travelH2tour.Models
 			set
 			{
 				this._PHIEUDATTOURs.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "NHANVIEN_PHIEUDATTOUR1", Storage = "_PHIEUDATTOURs1", ThisKey = "MANV", OtherKey = "MANV")]
-		public EntitySet<PHIEUDATTOUR> PHIEUDATTOURs1
-		{
-			get
-			{
-				return this._PHIEUDATTOURs1;
-			}
-			set
-			{
-				this._PHIEUDATTOURs1.Assign(value);
 			}
 		}
 
@@ -2041,18 +1805,6 @@ namespace travelH2tour.Models
 			this.SendPropertyChanging();
 			entity.NHANVIEN = null;
 		}
-
-		private void attach_PHIEUDATTOURs1(PHIEUDATTOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHANVIEN1 = this;
-		}
-
-		private void detach_PHIEUDATTOURs1(PHIEUDATTOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHANVIEN1 = null;
-		}
 	}
 
 	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.PHIEUDATTOUR")]
@@ -2063,29 +1815,21 @@ namespace travelH2tour.Models
 
 		private long _MAPDT;
 
-		private long _MANV;
+		private System.Nullable<long> _MANV;
 
 		private long _MAKH;
 
 		private System.Nullable<System.DateTime> _NGAYDAT;
 
-		private System.Nullable<decimal> _TONGTIEN;
-
 		private EntitySet<CT_DICHVU> _CT_DICHVUs;
-
-		private EntitySet<CT_DICHVU> _CT_DICHVUs1;
 
 		private EntitySet<CT_TOUR> _CT_TOURs;
 
-		private EntitySet<CT_TOUR> _CT_TOURs1;
-
-		private EntitySet<CT_TOUR> _CT_TOURs2;
+		private EntitySet<HOADON> _HOADONs;
 
 		private EntityRef<KHACHHANG> _KHACHHANG;
 
 		private EntityRef<NHANVIEN> _NHANVIEN;
-
-		private EntityRef<NHANVIEN> _NHANVIEN1;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -2093,26 +1837,21 @@ namespace travelH2tour.Models
 		partial void OnCreated();
 		partial void OnMAPDTChanging(long value);
 		partial void OnMAPDTChanged();
-		partial void OnMANVChanging(long value);
+		partial void OnMANVChanging(System.Nullable<long> value);
 		partial void OnMANVChanged();
 		partial void OnMAKHChanging(long value);
 		partial void OnMAKHChanged();
 		partial void OnNGAYDATChanging(System.Nullable<System.DateTime> value);
 		partial void OnNGAYDATChanged();
-		partial void OnTONGTIENChanging(System.Nullable<decimal> value);
-		partial void OnTONGTIENChanged();
 		#endregion
 
 		public PHIEUDATTOUR()
 		{
 			this._CT_DICHVUs = new EntitySet<CT_DICHVU>(new Action<CT_DICHVU>(this.attach_CT_DICHVUs), new Action<CT_DICHVU>(this.detach_CT_DICHVUs));
-			this._CT_DICHVUs1 = new EntitySet<CT_DICHVU>(new Action<CT_DICHVU>(this.attach_CT_DICHVUs1), new Action<CT_DICHVU>(this.detach_CT_DICHVUs1));
 			this._CT_TOURs = new EntitySet<CT_TOUR>(new Action<CT_TOUR>(this.attach_CT_TOURs), new Action<CT_TOUR>(this.detach_CT_TOURs));
-			this._CT_TOURs1 = new EntitySet<CT_TOUR>(new Action<CT_TOUR>(this.attach_CT_TOURs1), new Action<CT_TOUR>(this.detach_CT_TOURs1));
-			this._CT_TOURs2 = new EntitySet<CT_TOUR>(new Action<CT_TOUR>(this.attach_CT_TOURs2), new Action<CT_TOUR>(this.detach_CT_TOURs2));
+			this._HOADONs = new EntitySet<HOADON>(new Action<HOADON>(this.attach_HOADONs), new Action<HOADON>(this.detach_HOADONs));
 			this._KHACHHANG = default(EntityRef<KHACHHANG>);
 			this._NHANVIEN = default(EntityRef<NHANVIEN>);
-			this._NHANVIEN1 = default(EntityRef<NHANVIEN>);
 			OnCreated();
 		}
 
@@ -2136,8 +1875,8 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_MANV", DbType = "BigInt NOT NULL")]
-		public long MANV
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_MANV", DbType = "BigInt")]
+		public System.Nullable<long> MANV
 		{
 			get
 			{
@@ -2147,7 +1886,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MANV != value))
 				{
-					if ((this._NHANVIEN.HasLoadedOrAssignedValue || this._NHANVIEN1.HasLoadedOrAssignedValue))
+					if (this._NHANVIEN.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2204,26 +1943,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TONGTIEN", DbType = "Decimal(18,0)")]
-		public System.Nullable<decimal> TONGTIEN
-		{
-			get
-			{
-				return this._TONGTIEN;
-			}
-			set
-			{
-				if ((this._TONGTIEN != value))
-				{
-					this.OnTONGTIENChanging(value);
-					this.SendPropertyChanging();
-					this._TONGTIEN = value;
-					this.SendPropertyChanged("TONGTIEN");
-					this.OnTONGTIENChanged();
-				}
-			}
-		}
-
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_DICHVU", Storage = "_CT_DICHVUs", ThisKey = "MAPDT", OtherKey = "MAPDT")]
 		public EntitySet<CT_DICHVU> CT_DICHVUs
 		{
@@ -2234,19 +1953,6 @@ namespace travelH2tour.Models
 			set
 			{
 				this._CT_DICHVUs.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_DICHVU1", Storage = "_CT_DICHVUs1", ThisKey = "MAPDT", OtherKey = "MAPDT")]
-		public EntitySet<CT_DICHVU> CT_DICHVUs1
-		{
-			get
-			{
-				return this._CT_DICHVUs1;
-			}
-			set
-			{
-				this._CT_DICHVUs1.Assign(value);
 			}
 		}
 
@@ -2263,29 +1969,16 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_TOUR1", Storage = "_CT_TOURs1", ThisKey = "MAPDT", OtherKey = "MAPDT")]
-		public EntitySet<CT_TOUR> CT_TOURs1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_HOADON", Storage = "_HOADONs", ThisKey = "MAPDT", OtherKey = "MAPDT")]
+		public EntitySet<HOADON> HOADONs
 		{
 			get
 			{
-				return this._CT_TOURs1;
+				return this._HOADONs;
 			}
 			set
 			{
-				this._CT_TOURs1.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "PHIEUDATTOUR_CT_TOUR2", Storage = "_CT_TOURs2", ThisKey = "MAPDT", OtherKey = "MAPDT")]
-		public EntitySet<CT_TOUR> CT_TOURs2
-		{
-			get
-			{
-				return this._CT_TOURs2;
-			}
-			set
-			{
-				this._CT_TOURs2.Assign(value);
+				this._HOADONs.Assign(value);
 			}
 		}
 
@@ -2350,43 +2043,9 @@ namespace travelH2tour.Models
 					}
 					else
 					{
-						this._MANV = default(long);
+						this._MANV = default(Nullable<long>);
 					}
 					this.SendPropertyChanged("NHANVIEN");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "NHANVIEN_PHIEUDATTOUR1", Storage = "_NHANVIEN1", ThisKey = "MANV", OtherKey = "MANV", IsForeignKey = true)]
-		public NHANVIEN NHANVIEN1
-		{
-			get
-			{
-				return this._NHANVIEN1.Entity;
-			}
-			set
-			{
-				NHANVIEN previousValue = this._NHANVIEN1.Entity;
-				if (((previousValue != value)
-							|| (this._NHANVIEN1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NHANVIEN1.Entity = null;
-						previousValue.PHIEUDATTOURs1.Remove(this);
-					}
-					this._NHANVIEN1.Entity = value;
-					if ((value != null))
-					{
-						value.PHIEUDATTOURs1.Add(this);
-						this._MANV = value.MANV;
-					}
-					else
-					{
-						this._MANV = default(long);
-					}
-					this.SendPropertyChanged("NHANVIEN1");
 				}
 			}
 		}
@@ -2423,18 +2082,6 @@ namespace travelH2tour.Models
 			entity.PHIEUDATTOUR = null;
 		}
 
-		private void attach_CT_DICHVUs1(CT_DICHVU entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHIEUDATTOUR1 = this;
-		}
-
-		private void detach_CT_DICHVUs1(CT_DICHVU entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHIEUDATTOUR1 = null;
-		}
-
 		private void attach_CT_TOURs(CT_TOUR entity)
 		{
 			this.SendPropertyChanging();
@@ -2447,28 +2094,16 @@ namespace travelH2tour.Models
 			entity.PHIEUDATTOUR = null;
 		}
 
-		private void attach_CT_TOURs1(CT_TOUR entity)
+		private void attach_HOADONs(HOADON entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEUDATTOUR1 = this;
+			entity.PHIEUDATTOUR = this;
 		}
 
-		private void detach_CT_TOURs1(CT_TOUR entity)
+		private void detach_HOADONs(HOADON entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEUDATTOUR1 = null;
-		}
-
-		private void attach_CT_TOURs2(CT_TOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHIEUDATTOUR2 = this;
-		}
-
-		private void detach_CT_TOURs2(CT_TOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHIEUDATTOUR2 = null;
+			entity.PHIEUDATTOUR = null;
 		}
 	}
 
@@ -2488,25 +2123,13 @@ namespace travelH2tour.Models
 
 		private string _HINHTOUR;
 
-		private System.Nullable<decimal> _GIATOUR;
+		private System.Nullable<decimal> _TIENTOUR;
 
 		private EntitySet<CT_TOUR> _CT_TOURs;
 
-		private EntitySet<CT_TOUR> _CT_TOURs1;
-
-		private EntitySet<CT_TOUR> _CT_TOURs2;
-
 		private EntityRef<DIADIEM> _DIADIEM;
 
-		private EntityRef<DIADIEM> _DIADIEM1;
-
-		private EntityRef<DIADIEM> _DIADIEM2;
-
 		private EntityRef<LOAITOUR> _LOAITOUR;
-
-		private EntityRef<LOAITOUR> _LOAITOUR1;
-
-		private EntityRef<LOAITOUR> _LOAITOUR2;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -2522,21 +2145,15 @@ namespace travelH2tour.Models
 		partial void OnTENTOURChanged();
 		partial void OnHINHTOURChanging(string value);
 		partial void OnHINHTOURChanged();
-		partial void OnGIATOURChanging(System.Nullable<decimal> value);
-		partial void OnGIATOURChanged();
+		partial void OnTIENTOURChanging(System.Nullable<decimal> value);
+		partial void OnTIENTOURChanged();
 		#endregion
 
 		public TOURDL()
 		{
 			this._CT_TOURs = new EntitySet<CT_TOUR>(new Action<CT_TOUR>(this.attach_CT_TOURs), new Action<CT_TOUR>(this.detach_CT_TOURs));
-			this._CT_TOURs1 = new EntitySet<CT_TOUR>(new Action<CT_TOUR>(this.attach_CT_TOURs1), new Action<CT_TOUR>(this.detach_CT_TOURs1));
-			this._CT_TOURs2 = new EntitySet<CT_TOUR>(new Action<CT_TOUR>(this.attach_CT_TOURs2), new Action<CT_TOUR>(this.detach_CT_TOURs2));
 			this._DIADIEM = default(EntityRef<DIADIEM>);
-			this._DIADIEM1 = default(EntityRef<DIADIEM>);
-			this._DIADIEM2 = default(EntityRef<DIADIEM>);
 			this._LOAITOUR = default(EntityRef<LOAITOUR>);
-			this._LOAITOUR1 = default(EntityRef<LOAITOUR>);
-			this._LOAITOUR2 = default(EntityRef<LOAITOUR>);
 			OnCreated();
 		}
 
@@ -2571,8 +2188,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MADIADIEM != value))
 				{
-					if (((this._DIADIEM.HasLoadedOrAssignedValue || this._DIADIEM1.HasLoadedOrAssignedValue)
-								|| this._DIADIEM2.HasLoadedOrAssignedValue))
+					if (this._DIADIEM.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2596,8 +2212,7 @@ namespace travelH2tour.Models
 			{
 				if ((this._MALOAITOUR != value))
 				{
-					if (((this._LOAITOUR.HasLoadedOrAssignedValue || this._LOAITOUR1.HasLoadedOrAssignedValue)
-								|| this._LOAITOUR2.HasLoadedOrAssignedValue))
+					if (this._LOAITOUR.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2650,22 +2265,22 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_GIATOUR", DbType = "Decimal(18,0)")]
-		public System.Nullable<decimal> GIATOUR
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TIENTOUR", DbType = "Decimal(18,0)")]
+		public System.Nullable<decimal> TIENTOUR
 		{
 			get
 			{
-				return this._GIATOUR;
+				return this._TIENTOUR;
 			}
 			set
 			{
-				if ((this._GIATOUR != value))
+				if ((this._TIENTOUR != value))
 				{
-					this.OnGIATOURChanging(value);
+					this.OnTIENTOURChanging(value);
 					this.SendPropertyChanging();
-					this._GIATOUR = value;
-					this.SendPropertyChanged("GIATOUR");
-					this.OnGIATOURChanged();
+					this._TIENTOUR = value;
+					this.SendPropertyChanged("TIENTOUR");
+					this.OnTIENTOURChanged();
 				}
 			}
 		}
@@ -2680,32 +2295,6 @@ namespace travelH2tour.Models
 			set
 			{
 				this._CT_TOURs.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "TOURDL_CT_TOUR1", Storage = "_CT_TOURs1", ThisKey = "MATOUR", OtherKey = "MATOUR")]
-		public EntitySet<CT_TOUR> CT_TOURs1
-		{
-			get
-			{
-				return this._CT_TOURs1;
-			}
-			set
-			{
-				this._CT_TOURs1.Assign(value);
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "TOURDL_CT_TOUR2", Storage = "_CT_TOURs2", ThisKey = "MATOUR", OtherKey = "MATOUR")]
-		public EntitySet<CT_TOUR> CT_TOURs2
-		{
-			get
-			{
-				return this._CT_TOURs2;
-			}
-			set
-			{
-				this._CT_TOURs2.Assign(value);
 			}
 		}
 
@@ -2739,74 +2328,6 @@ namespace travelH2tour.Models
 						this._MADIADIEM = default(long);
 					}
 					this.SendPropertyChanged("DIADIEM");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DIADIEM_TOURDL1", Storage = "_DIADIEM1", ThisKey = "MADIADIEM", OtherKey = "MADIADIEM", IsForeignKey = true)]
-		public DIADIEM DIADIEM1
-		{
-			get
-			{
-				return this._DIADIEM1.Entity;
-			}
-			set
-			{
-				DIADIEM previousValue = this._DIADIEM1.Entity;
-				if (((previousValue != value)
-							|| (this._DIADIEM1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DIADIEM1.Entity = null;
-						previousValue.TOURDLs1.Remove(this);
-					}
-					this._DIADIEM1.Entity = value;
-					if ((value != null))
-					{
-						value.TOURDLs1.Add(this);
-						this._MADIADIEM = value.MADIADIEM;
-					}
-					else
-					{
-						this._MADIADIEM = default(long);
-					}
-					this.SendPropertyChanged("DIADIEM1");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "DIADIEM_TOURDL2", Storage = "_DIADIEM2", ThisKey = "MADIADIEM", OtherKey = "MADIADIEM", IsForeignKey = true)]
-		public DIADIEM DIADIEM2
-		{
-			get
-			{
-				return this._DIADIEM2.Entity;
-			}
-			set
-			{
-				DIADIEM previousValue = this._DIADIEM2.Entity;
-				if (((previousValue != value)
-							|| (this._DIADIEM2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DIADIEM2.Entity = null;
-						previousValue.TOURDLs2.Remove(this);
-					}
-					this._DIADIEM2.Entity = value;
-					if ((value != null))
-					{
-						value.TOURDLs2.Add(this);
-						this._MADIADIEM = value.MADIADIEM;
-					}
-					else
-					{
-						this._MADIADIEM = default(long);
-					}
-					this.SendPropertyChanged("DIADIEM2");
 				}
 			}
 		}
@@ -2845,74 +2366,6 @@ namespace travelH2tour.Models
 			}
 		}
 
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "LOAITOUR_TOURDL1", Storage = "_LOAITOUR1", ThisKey = "MALOAITOUR", OtherKey = "MALOAITOUR", IsForeignKey = true)]
-		public LOAITOUR LOAITOUR1
-		{
-			get
-			{
-				return this._LOAITOUR1.Entity;
-			}
-			set
-			{
-				LOAITOUR previousValue = this._LOAITOUR1.Entity;
-				if (((previousValue != value)
-							|| (this._LOAITOUR1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LOAITOUR1.Entity = null;
-						previousValue.TOURDLs1.Remove(this);
-					}
-					this._LOAITOUR1.Entity = value;
-					if ((value != null))
-					{
-						value.TOURDLs1.Add(this);
-						this._MALOAITOUR = value.MALOAITOUR;
-					}
-					else
-					{
-						this._MALOAITOUR = default(long);
-					}
-					this.SendPropertyChanged("LOAITOUR1");
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "LOAITOUR_TOURDL2", Storage = "_LOAITOUR2", ThisKey = "MALOAITOUR", OtherKey = "MALOAITOUR", IsForeignKey = true)]
-		public LOAITOUR LOAITOUR2
-		{
-			get
-			{
-				return this._LOAITOUR2.Entity;
-			}
-			set
-			{
-				LOAITOUR previousValue = this._LOAITOUR2.Entity;
-				if (((previousValue != value)
-							|| (this._LOAITOUR2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LOAITOUR2.Entity = null;
-						previousValue.TOURDLs2.Remove(this);
-					}
-					this._LOAITOUR2.Entity = value;
-					if ((value != null))
-					{
-						value.TOURDLs2.Add(this);
-						this._MALOAITOUR = value.MALOAITOUR;
-					}
-					else
-					{
-						this._MALOAITOUR = default(long);
-					}
-					this.SendPropertyChanged("LOAITOUR2");
-				}
-			}
-		}
-
 		public event PropertyChangingEventHandler PropertyChanging;
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2943,30 +2396,6 @@ namespace travelH2tour.Models
 		{
 			this.SendPropertyChanging();
 			entity.TOURDL = null;
-		}
-
-		private void attach_CT_TOURs1(CT_TOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TOURDL1 = this;
-		}
-
-		private void detach_CT_TOURs1(CT_TOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TOURDL1 = null;
-		}
-
-		private void attach_CT_TOURs2(CT_TOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TOURDL2 = this;
-		}
-
-		private void detach_CT_TOURs2(CT_TOUR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TOURDL2 = null;
 		}
 	}
 }
