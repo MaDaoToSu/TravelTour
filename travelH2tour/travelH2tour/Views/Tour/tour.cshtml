@@ -1,0 +1,29 @@
+﻿@model IEnumerable<travelH2tour.Models.CT_TOUR>
+@{
+    ViewBag.Title = "tour";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="package-item bg-white mb-2">
+            <img class="img-fluid" src="~/img/@item.TOURDL.HINHTOUR" alt="">
+            <div class="p-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>@item.TOURDL.DIADIEM.TENDIADIEM</small>
+                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>(@item.NGAYDI.Value.Date-@item.NGAYVE.Value.Date) </small>
+                    <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>@item.SOLUONGKHACH</small>
+                </div>
+                <p class="h5 text-decoration-none" href="">Discover amazing places of the world with us</p>
+                <div class="border-top mt-4 pt-4">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="m-0">$@item.TOURDL.TIENTOUR</h5>
+                        <a href="@Url.Action("BookTour","Tour",new {id = item.TOURDL.MATOUR})" class="btn btn-primary ">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
