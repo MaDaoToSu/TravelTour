@@ -121,7 +121,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DangKyController.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
+    <Compile Include="Controllers\DichVuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -330,6 +332,8 @@
     <Content Include="Views\Tour\tour.cshtml" />
     <Content Include="Views\NhanVien\loadnhanvien.cshtml" />
     <Content Include="Views\KhachHang\DanhGiaCuaKhachHang.cshtml" />
+    <Content Include="Views\DangKy\dangky.cshtml" />
+    <Content Include="Views\DichVu\loadDichVu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
