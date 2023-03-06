@@ -221,4 +221,9 @@ VALUES (3,2,'15/3/2023','18/3/2003','4',N'Tuyệt vời'),
 select *from ADMIN
 INSERT INTO ADMIN (TAIKHOAN_ADMIN,MATKHAU_ADMIN)
 VALUES ('admin','1234567'),
+<<<<<<< HEAD
 ('giamdoc','1234567')
+=======
+('giamdoc','1234567')
+
+>>>>>>> 175d1a82f3a105c8ce0aff46396f31941d083933
