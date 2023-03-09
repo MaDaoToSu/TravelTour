@@ -126,8 +126,11 @@
     <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\DichVuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
+=======
+>>>>>>> 54237b4 (update3/5)
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -330,14 +333,20 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\DiaDiem\CT_DiaDiem.cshtml" />
     <Content Include="Views\Tour\tour.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\NhanVien\loadnhanvien.cshtml" />
     <Content Include="Views\KhachHang\DanhGiaCuaKhachHang.cshtml" />
     <Content Include="Views\DangKy\dangky.cshtml" />
     <Content Include="Views\DichVu\loadDichVu.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Admin\Blog.cshtml" />
     <Content Include="Views\DichVu\TrangDichVu.cshtml" />
     <Content Include="Views\Tour\TrangTour.cshtml" />
     <Content Include="Views\DiaDiem\Nav_DiaDiem.cshtml" />
+=======
+=======
+>>>>>>> 54237b4 (update3/5)
+>>>>>>> 5a5feeb86230fe8b59643f631b9bd4e3b79d334d
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

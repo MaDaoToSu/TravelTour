@@ -236,6 +236,7 @@ VALUES (13,2,'15/3/2023','18/3/2003','4',N'Tuyệt vời'),
 select *from ADMIN
 INSERT INTO ADMIN (TAIKHOAN_ADMIN,MATKHAU_ADMIN)
 VALUES ('admin','1234567'),
+<<<<<<< HEAD
 ('giamdoc','1234567')
 
 select * from BLOG
@@ -294,3 +295,8 @@ Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur eu dolor
 aliquam varius in eget massa. Vivamus consequat est mi, et sollicitudin magna pharetra sed. Aenean 
 sit amet urna molestie, pulvinar ipsum a, facilisis lacus. Suspendisse mi ex, posuere id lobortis sed, 
 rutrum quis lacus. Phasellus maximus sollicitudin dolor, non aliquam erat scelerisque vitae. Nam eleifend velit purus.','1/2/2022','HinhBlog3.jpg')
+=======
+
+('giamdoc','1234567')
+
+>>>>>>> 5a5feeb86230fe8b59643f631b9bd4e3b79d334d

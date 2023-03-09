@@ -26,7 +26,39 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
     }
 </div>
+=======
+<<<<<<< HEAD
+=======
+        <!-- Booking End -->
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="package-item bg-white mb-2">
+                    <img class="img-fluid" src="~/img/@item.TOURDL.HINHTOUR" alt="">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>@item.TOURDL.DIADIEM.TENDIADIEM</small>
+                            <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>(@item.NGAYDI.Value.Date-@item.NGAYVE.Value.Date) </small>
+                            <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>@item.TOURDL.LOAITOUR.SOLUONG</small>
+                        </div>
+                        <p class="h5 text-decoration-none" href="">Discover amazing places of the world with us.</p>
+                        <div class="border-top mt-4 pt-4">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="m-0">@item.TOURDL.GIATOUR VND</h5>
+                                <a href="" class="btn btn-primary ">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+>>>>>>> 175d1a82f3a105c8ce0aff46396f31941d083933
+    </div>
+}
+>>>>>>> 5a5feeb86230fe8b59643f631b9bd4e3b79d334d
 
