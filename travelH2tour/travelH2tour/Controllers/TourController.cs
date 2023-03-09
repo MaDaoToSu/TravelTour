@@ -11,9 +11,19 @@ namespace travelH2tour.Controllers
 	{
 		dbTravelTourDataContext data = new dbTravelTourDataContext();
 		// GET: Tour
+		public List<TOURDL> getTour(int count)
+		{
+			return data.TOURDLs.OrderByDescending(p => p.TIENTOUR).Take(count).ToList();
+		}
 		public ActionResult tour()
 		{
-			var ctTour = from CT_Tour in data.CT_TOURs select CT_Tour;
+			var Tour = getTour(6);
+			return PartialView(Tour);
+		}
+
+		public ActionResult TrangTour()
+		{
+			var ctTour = data.TOURDLs.OrderByDescending(p => p.TIENTOUR).ToList();
 			return View(ctTour);
 		}
 	}

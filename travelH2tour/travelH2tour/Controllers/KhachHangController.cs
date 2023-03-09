@@ -11,10 +11,15 @@ namespace travelH2tour.Controllers
 	{
 		dbTravelTourDataContext data = new dbTravelTourDataContext();
 		// GET: KhachHang
+
+		public List<CT_TOUR> getDanhGia(int count)
+		{
+			return data.CT_TOURs.Select(p => p).Take(count).ToList();
+		}
 		public ActionResult DanhGiaCuaKhachHang()
 		{
-			var getDanhgia = from danhgia in data.CT_TOURs select danhgia;
-			return View(getDanhgia);
+			var Danhgia = getDanhGia(4);
+			return PartialView(Danhgia);
 		}
 	}
 }

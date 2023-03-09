@@ -19,7 +19,7 @@ namespace travelH2tour.Controllers
 		public ActionResult loadnhanvien()
 		{
 			var nhanvien = getNhanVien(4);
-			return View(nhanvien);
+			return PartialView(nhanvien);
 		}
 	}
 }

@@ -121,6 +121,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DangKyController.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\DichVuController.cs" />
@@ -328,15 +329,19 @@
     <Content Include="Views\DiaDiem\HienThiDiaDiem.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\DiaDiem\CT_DiaDiem.cshtml" />
-    <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
     <Content Include="Views\Tour\tour.cshtml" />
     <Content Include="Views\NhanVien\loadnhanvien.cshtml" />
     <Content Include="Views\KhachHang\DanhGiaCuaKhachHang.cshtml" />
     <Content Include="Views\DangKy\dangky.cshtml" />
     <Content Include="Views\DichVu\loadDichVu.cshtml" />
+    <Content Include="Views\Admin\Blog.cshtml" />
+    <Content Include="Views\DichVu\TrangDichVu.cshtml" />
+    <Content Include="Views\Tour\TrangTour.cshtml" />
+    <Content Include="Views\DiaDiem\Nav_DiaDiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Navbar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

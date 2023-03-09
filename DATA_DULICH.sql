@@ -121,6 +121,18 @@ Primary Key ([MAHD])
 ) 
 go
 
+Create table [BLOG]
+(
+	[MABLOG] Bigint Identity NOT NULL,
+	[TAIKHOAN_ADMIN] Varchar(100) NOT NULL,
+	[TENBLOG] Nvarchar(200) NULL,
+	[NOIDUNG] Nvarchar(4000) NULL,
+	[NGAYDANG] Datetime NULL,
+	[HINHBLOG] Varchar(100) NULL,
+Primary Key ([MABLOG])
+) 
+go
+
 
 Alter table [PHIEUDATTOUR] add  foreign key([MANV]) references [NHANVIEN] ([MANV])  on update no action on delete no action 
 go
@@ -140,6 +152,8 @@ Alter table [TOURDL] add  foreign key([MALOAITOUR]) references [LOAITOUR] ([MALO
 go
 Alter table [TOURDL] add  foreign key([MADIADIEM]) references [DIADIEM] ([MADIADIEM])  on update no action on delete no action 
 go
+Alter table [BLOG] add  foreign key([TAIKHOAN_ADMIN]) references [ADMIN] ([TAIKHOAN_ADMIN])  on update no action on delete no action 
+go
 
 select *from NHANVIEN
 INSERT INTO NHANVIEN (TAIKHOAN_NV,MATKHAU_NV,TENNV,GIOITINH,NGAYSINH,CMND_CCCD_NV) 
@@ -154,7 +168,8 @@ VALUES ('trong01_06','123',N'NGUYỄN MINH TRỌNG','NAM','01/03/2002','01234567
 
 select *from KHACHHANG
 INSERT INTO KHACHHANG (TENKH,TAIKHOAN_KH,MATKHAU_KH,EMAIL,GIOITINH,NGAYSINH,CMND_CCCD_KH)
-VALUES (N'ĐOÀN TRUNG KIÊN','KIENVUS45','123','DTKVUS@gmail.com','NAM','25/5/2002','123456789011'),
+VALUES 
+(N'ĐOÀN TRUNG KIÊN','KIENVUS45','123','DTKVUS@gmail.com','NAM','25/5/2002','123456789011'),
 (N'NGUYỄN VIỆT TRUNG','TRUNGSKULL','123','TSKULL@gmail.com','NAM','12/3/2002','123456789012'),
 (N'NGUYỄN MINH TUẤN','TUANVUI','123','TUANVUI1203@gmail.com','NAM','15/5/2002','123456789013'),
 (N'DƯƠNG VĂN TIỄN','TIENCOLD','123','DVTC@gmail.com','NAM','28/7/2002','123456789014'),
@@ -190,19 +205,19 @@ select *from TOURDL
 INSERT INTO TOURDL (MADIADIEM,MALOAITOUR,TENTOUR,HINHTOUR,TIENTOUR)
 VALUES (1,1,N'DU LỊCH NGẮM HOA ANH ĐÀO - ĐÀ LẠT','HinhTour1.jpg',1500000),
 (4,4,N'DU LỊCH BIỂN - ĐÀ NẴNG','HinhTour2.jpg',700000),
-(2,2,N'DU LỊCH THAM QUAN DI TÍCH LỊCH SỬ - HỘI AN','HinhTour2.jpg',800000),
-(5,3,N'DU LỊCH THAM QUAN SAN HÔ - PHÚ QUỐC','HinhTour2.jpg',900000),
-(6,4,N'DU LỊCH VỊNH HẠ LONG- HẠ LONG','HinhTour2.jpg',2500000),
-(4,3,N'DU LỊCH BIỂN NHA TRANG- NHA TRANG','HinhTour2.jpg',3200000)
+(2,2,N'DU LỊCH THAM QUAN DI TÍCH LỊCH SỬ - HỘI AN','HinhTour3.jpg',800000),
+(5,3,N'DU LỊCH THAM QUAN SAN HÔ - PHÚ QUỐC','HinhTour4.jpg',900000),
+(6,4,N'DU LỊCH VỊNH HẠ LONG- HẠ LONG','HinhTour5.jpg',2500000),
+(4,3,N'DU LỊCH BIỂN NHA TRANG- NHA TRANG','HinhTour6.jpg',3200000)
 
 select *from PHIEUDATTOUR
 INSERT INTO PHIEUDATTOUR (MANV,MAKH,NGAYDAT)
 VALUES (1,2,'30/3/2022'),
-(2,3,'31/3/2022'),
-(3,4,'20/1/2023'),
+(2,7,'31/3/2022'),
+(3,8,'20/1/2023'),
 (4,5,'31/3/2019'),
-(5,6,'19/9/2022'),
-(6,1,'31/3/2021')
+(5,2,'19/9/2022'),
+(5,1,'31/3/2021')
 
 select *from CT_DICHVU
 INSERT INTO CT_DICHVU (MAPDT,MADV)
@@ -211,14 +226,71 @@ VALUES (3,1),
 
 select *from CT_TOUR
 INSERT INTO CT_TOUR (MAPDT,MATOUR,NGAYDI,NGAYVE,SOLUONGKHACH,DANHGIATUKHACHHANG)
-VALUES (3,2,'15/3/2023','18/3/2003','4',N'Tuyệt vời'),
-		(4,4,'31/3/2023','17/6/2003','6',N'Chán chết'),
-		(1,3,'31/3/2023','9/1/2018','6',N'Cũng được'),
+VALUES (13,2,'15/3/2023','18/3/2003','4',N'Tuyệt vời'),
+		(14,1,'31/3/2023','17/6/2003','6',N'Chán chết'),
+		(1,7,'31/3/2023','9/1/2018','6',N'Cũng được'),
 		(2,5,'31/3/2023','1/3/2023','6',N'Phong cảnh hữu tình'),
-		(5,1,'31/3/2023','12/7/2022','6',N'Không khí trong lành '),
-		(6,3,'31/3/2023','18/3/2021','6',N'Hướng dẫn viên chưa nhiệt tình')
+		(15,9,'31/3/2023','12/7/2022','6',N'Không khí trong lành '),
+		(2,10,'31/3/2023','18/3/2021','6',N'Hướng dẫn viên chưa nhiệt tình')
 
 select *from ADMIN
 INSERT INTO ADMIN (TAIKHOAN_ADMIN,MATKHAU_ADMIN)
 VALUES ('admin','1234567'),
 ('giamdoc','1234567')
+
+select * from BLOG
+INSERT INTO BLOG (TAIKHOAN_ADMIN,TENBLOG,NOIDUNG,NGAYDANG,HINHBLOG)
+VALUES ('admin',N'Du lịch đà lạt vui như thế nào!!!','Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit. Integer nec diam a nibh pellentesque vestibulum.
+Proin suscipit vel metus eu posuere. Sed elementum, nunc ut pharetra lobortis,
+magna neque tincidunt arcu, non auctor libero erat quis quam. Integer in dapibus massa. 
+Duis rutrum nulla eget eros cursus, in imperdiet magna lacinia. Nunc pellentesque diam 
+sed porttitor mollis. Phasellus a quam pellentesque, cursus lectus volutpat, posuere elit. 
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+Donec nec turpis elit. Pellentesque mi est, efficitur ut faucibus et, interdum in dolor. 
+Mauris aliquam ex est, vitae ultricies orci convallis non. Nulla facilisi.
+Donec mollis quam justo, ut consectetur metus rutrum vitae. Morbi rhoncus semper urna, 
+ac semper quam maximus vel. Phasellus convallis ligula leo, vel convallis neque vestibulum et.
+Nunc in accumsan sapien. Mauris suscipit, urna pulvinar pharetra hendrerit, libero justo porttitor nunc, 
+non vestibulum libero orci sit amet nibh. Sed tristique mollis neque, non vehicula tellus sodales ut. 
+Quisque auctor odio a placerat suscipit. Quisque vel suscipit magna, a fringilla tellus. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur eu dolor et massa 
+aliquam varius in eget massa. Vivamus consequat est mi, et sollicitudin magna pharetra sed. Aenean 
+sit amet urna molestie, pulvinar ipsum a, facilisis lacus. Suspendisse mi ex, posuere id lobortis sed, 
+rutrum quis lacus. Phasellus maximus sollicitudin dolor, non aliquam erat scelerisque vitae. Nam eleifend velit purus.','7/3/2023','HinhBlog1.jpg'),
+('admin',N'Du lịch Hạ Long!!!','Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit. Integer nec diam a nibh pellentesque vestibulum.
+Proin suscipit vel metus eu posuere. Sed elementum, nunc ut pharetra lobortis,
+magna neque tincidunt arcu, non auctor libero erat quis quam. Integer in dapibus massa. 
+Duis rutrum nulla eget eros cursus, in imperdiet magna lacinia. Nunc pellentesque diam 
+sed porttitor mollis. Phasellus a quam pellentesque, cursus lectus volutpat, posuere elit. 
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+Donec nec turpis elit. Pellentesque mi est, efficitur ut faucibus et, interdum in dolor. 
+Mauris aliquam ex est, vitae ultricies orci convallis non. Nulla facilisi.
+Donec mollis quam justo, ut consectetur metus rutrum vitae. Morbi rhoncus semper urna, 
+ac semper quam maximus vel. Phasellus convallis ligula leo, vel convallis neque vestibulum et.
+Nunc in accumsan sapien. Mauris suscipit, urna pulvinar pharetra hendrerit, libero justo porttitor nunc, 
+non vestibulum libero orci sit amet nibh. Sed tristique mollis neque, non vehicula tellus sodales ut. 
+Quisque auctor odio a placerat suscipit. Quisque vel suscipit magna, a fringilla tellus. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur eu dolor et massa 
+aliquam varius in eget massa. Vivamus consequat est mi, et sollicitudin magna pharetra sed. Aenean 
+sit amet urna molestie, pulvinar ipsum a, facilisis lacus. Suspendisse mi ex, posuere id lobortis sed, 
+rutrum quis lacus. Phasellus maximus sollicitudin dolor, non aliquam erat scelerisque vitae. Nam eleifend velit purus.','12/8/2023','HinhBlog2.jpg'),
+('admin',N'Du lịch Phú Quốc!!!','Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit. Integer nec diam a nibh pellentesque vestibulum.
+Proin suscipit vel metus eu posuere. Sed elementum, nunc ut pharetra lobortis,
+magna neque tincidunt arcu, non auctor libero erat quis quam. Integer in dapibus massa. 
+Duis rutrum nulla eget eros cursus, in imperdiet magna lacinia. Nunc pellentesque diam 
+sed porttitor mollis. Phasellus a quam pellentesque, cursus lectus volutpat, posuere elit. 
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+Donec nec turpis elit. Pellentesque mi est, efficitur ut faucibus et, interdum in dolor. 
+Mauris aliquam ex est, vitae ultricies orci convallis non. Nulla facilisi.
+Donec mollis quam justo, ut consectetur metus rutrum vitae. Morbi rhoncus semper urna, 
+ac semper quam maximus vel. Phasellus convallis ligula leo, vel convallis neque vestibulum et.
+Nunc in accumsan sapien. Mauris suscipit, urna pulvinar pharetra hendrerit, libero justo porttitor nunc, 
+non vestibulum libero orci sit amet nibh. Sed tristique mollis neque, non vehicula tellus sodales ut. 
+Quisque auctor odio a placerat suscipit. Quisque vel suscipit magna, a fringilla tellus. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur eu dolor et massa 
+aliquam varius in eget massa. Vivamus consequat est mi, et sollicitudin magna pharetra sed. Aenean 
+sit amet urna molestie, pulvinar ipsum a, facilisis lacus. Suspendisse mi ex, posuere id lobortis sed, 
+rutrum quis lacus. Phasellus maximus sollicitudin dolor, non aliquam erat scelerisque vitae. Nam eleifend velit purus.','1/2/2022','HinhBlog3.jpg')

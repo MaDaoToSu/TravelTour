@@ -11,16 +11,27 @@ namespace travelH2tour.Controllers
 	{
 		dbTravelTourDataContext data = new dbTravelTourDataContext();
 		// GET: DiaDiem
+
+		public List<DIADIEM> GetDIADIEMs(int count)
+		{
+			return data.DIADIEMs.Select(p => p).Take(count).ToList();
+		}
 		public ActionResult HienThiDiaDiem()
 		{
-			var diadiem = from diaDiem in data.DIADIEMs select diaDiem;
-			return View(diadiem);
+			var diadiem = GetDIADIEMs(6);
+			return PartialView(diadiem);
 		}
 
 		public ActionResult CT_DiaDiem(int id)
 		{
-			var ctTour = from CT_Tour in data.CT_TOURs where CT_Tour.TOURDL.MADIADIEM == id select CT_Tour;
-			return View(ctTour);
+			var Tour = from tour in data.TOURDLs where tour.MADIADIEM == id select tour;
+			return View(Tour);
+		}
+
+		public ActionResult Nav_DiaDiem()
+		{
+			var diadiem = data.DIADIEMs.Select(p => p).ToList();
+			return PartialView(diadiem);
 		}
 	}
 }

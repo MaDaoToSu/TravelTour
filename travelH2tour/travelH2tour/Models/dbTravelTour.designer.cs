@@ -63,6 +63,9 @@ namespace travelH2tour.Models
 		partial void InsertTOURDL(TOURDL instance);
 		partial void UpdateTOURDL(TOURDL instance);
 		partial void DeleteTOURDL(TOURDL instance);
+		partial void InsertBLOG(BLOG instance);
+		partial void UpdateBLOG(BLOG instance);
+		partial void DeleteBLOG(BLOG instance);
 		#endregion
 
 		public dbTravelTourDataContext(string connection) :
@@ -182,6 +185,14 @@ namespace travelH2tour.Models
 				return this.GetTable<TOURDL>();
 			}
 		}
+
+		public System.Data.Linq.Table<BLOG> BLOGs
+		{
+			get
+			{
+				return this.GetTable<BLOG>();
+			}
+		}
 	}
 
 	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.ADMIN")]
@@ -193,6 +204,8 @@ namespace travelH2tour.Models
 		private string _TAIKHOAN_ADMIN;
 
 		private string _MATKHAU_ADMIN;
+
+		private EntitySet<BLOG> _BLOGs;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -206,6 +219,7 @@ namespace travelH2tour.Models
 
 		public ADMIN()
 		{
+			this._BLOGs = new EntitySet<BLOG>(new Action<BLOG>(this.attach_BLOGs), new Action<BLOG>(this.detach_BLOGs));
 			OnCreated();
 		}
 
@@ -249,6 +263,19 @@ namespace travelH2tour.Models
 			}
 		}
 
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "ADMIN_BLOG", Storage = "_BLOGs", ThisKey = "TAIKHOAN_ADMIN", OtherKey = "TAIKHOAN_ADMIN")]
+		public EntitySet<BLOG> BLOGs
+		{
+			get
+			{
+				return this._BLOGs;
+			}
+			set
+			{
+				this._BLOGs.Assign(value);
+			}
+		}
+
 		public event PropertyChangingEventHandler PropertyChanging;
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -267,6 +294,18 @@ namespace travelH2tour.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+
+		private void attach_BLOGs(BLOG entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADMIN = this;
+		}
+
+		private void detach_BLOGs(BLOG entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADMIN = null;
 		}
 	}
 
@@ -2396,6 +2435,229 @@ namespace travelH2tour.Models
 		{
 			this.SendPropertyChanging();
 			entity.TOURDL = null;
+		}
+	}
+
+	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.BLOG")]
+	public partial class BLOG : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+		private long _MABLOG;
+
+		private string _TAIKHOAN_ADMIN;
+
+		private string _TENBLOG;
+
+		private string _NOIDUNG;
+
+		private System.Nullable<System.DateTime> _NGAYDANG;
+
+		private string _HINHBLOG;
+
+		private EntityRef<ADMIN> _ADMIN;
+
+		#region Extensibility Method Definitions
+		partial void OnLoaded();
+		partial void OnValidate(System.Data.Linq.ChangeAction action);
+		partial void OnCreated();
+		partial void OnMABLOGChanging(long value);
+		partial void OnMABLOGChanged();
+		partial void OnTAIKHOAN_ADMINChanging(string value);
+		partial void OnTAIKHOAN_ADMINChanged();
+		partial void OnTENBLOGChanging(string value);
+		partial void OnTENBLOGChanged();
+		partial void OnNOIDUNGChanging(string value);
+		partial void OnNOIDUNGChanged();
+		partial void OnNGAYDANGChanging(System.Nullable<System.DateTime> value);
+		partial void OnNGAYDANGChanged();
+		partial void OnHINHBLOGChanging(string value);
+		partial void OnHINHBLOGChanged();
+		#endregion
+
+		public BLOG()
+		{
+			this._ADMIN = default(EntityRef<ADMIN>);
+			OnCreated();
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_MABLOG", AutoSync = AutoSync.OnInsert, DbType = "BigInt NOT NULL IDENTITY", IsPrimaryKey = true, IsDbGenerated = true)]
+		public long MABLOG
+		{
+			get
+			{
+				return this._MABLOG;
+			}
+			set
+			{
+				if ((this._MABLOG != value))
+				{
+					this.OnMABLOGChanging(value);
+					this.SendPropertyChanging();
+					this._MABLOG = value;
+					this.SendPropertyChanged("MABLOG");
+					this.OnMABLOGChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TAIKHOAN_ADMIN", DbType = "VarChar(100) NOT NULL", CanBeNull = false)]
+		public string TAIKHOAN_ADMIN
+		{
+			get
+			{
+				return this._TAIKHOAN_ADMIN;
+			}
+			set
+			{
+				if ((this._TAIKHOAN_ADMIN != value))
+				{
+					if (this._ADMIN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTAIKHOAN_ADMINChanging(value);
+					this.SendPropertyChanging();
+					this._TAIKHOAN_ADMIN = value;
+					this.SendPropertyChanged("TAIKHOAN_ADMIN");
+					this.OnTAIKHOAN_ADMINChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TENBLOG", DbType = "NVarChar(200)")]
+		public string TENBLOG
+		{
+			get
+			{
+				return this._TENBLOG;
+			}
+			set
+			{
+				if ((this._TENBLOG != value))
+				{
+					this.OnTENBLOGChanging(value);
+					this.SendPropertyChanging();
+					this._TENBLOG = value;
+					this.SendPropertyChanged("TENBLOG");
+					this.OnTENBLOGChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_NOIDUNG", DbType = "NVarChar(4000)")]
+		public string NOIDUNG
+		{
+			get
+			{
+				return this._NOIDUNG;
+			}
+			set
+			{
+				if ((this._NOIDUNG != value))
+				{
+					this.OnNOIDUNGChanging(value);
+					this.SendPropertyChanging();
+					this._NOIDUNG = value;
+					this.SendPropertyChanged("NOIDUNG");
+					this.OnNOIDUNGChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_NGAYDANG", DbType = "DateTime")]
+		public System.Nullable<System.DateTime> NGAYDANG
+		{
+			get
+			{
+				return this._NGAYDANG;
+			}
+			set
+			{
+				if ((this._NGAYDANG != value))
+				{
+					this.OnNGAYDANGChanging(value);
+					this.SendPropertyChanging();
+					this._NGAYDANG = value;
+					this.SendPropertyChanged("NGAYDANG");
+					this.OnNGAYDANGChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_HINHBLOG", DbType = "VarChar(100)")]
+		public string HINHBLOG
+		{
+			get
+			{
+				return this._HINHBLOG;
+			}
+			set
+			{
+				if ((this._HINHBLOG != value))
+				{
+					this.OnHINHBLOGChanging(value);
+					this.SendPropertyChanging();
+					this._HINHBLOG = value;
+					this.SendPropertyChanged("HINHBLOG");
+					this.OnHINHBLOGChanged();
+				}
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name = "ADMIN_BLOG", Storage = "_ADMIN", ThisKey = "TAIKHOAN_ADMIN", OtherKey = "TAIKHOAN_ADMIN", IsForeignKey = true)]
+		public ADMIN ADMIN
+		{
+			get
+			{
+				return this._ADMIN.Entity;
+			}
+			set
+			{
+				ADMIN previousValue = this._ADMIN.Entity;
+				if (((previousValue != value)
+							|| (this._ADMIN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ADMIN.Entity = null;
+						previousValue.BLOGs.Remove(this);
+					}
+					this._ADMIN.Entity = value;
+					if ((value != null))
+					{
+						value.BLOGs.Add(this);
+						this._TAIKHOAN_ADMIN = value.TAIKHOAN_ADMIN;
+					}
+					else
+					{
+						this._TAIKHOAN_ADMIN = default(string);
+					}
+					this.SendPropertyChanged("ADMIN");
+				}
+			}
+		}
+
+		public event PropertyChangingEventHandler PropertyChanging;
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
